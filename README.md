@@ -1,6 +1,8 @@
 # silver-umbrella
-Create an ubuntu linux VM in EC2 (using the launch wizzard)[https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:]
+Create an ubuntu linux VM in EC2 [using the launch wizzard](https://console.aws.amazon.com/ec2/v2/home?region=us-east-1#LaunchInstanceWizard:)
+
 Make sure you create a new ssh keypair name 'football' when asked during the wizard.
+
 Download this key (football.pem) to your local machine.
 chmod the key with this command ```chmod 400 football.pem```
 once the VM is booted highlight the VM and click the 'connect' button on the top.
@@ -24,8 +26,9 @@ now configure the minion that is installed on the same machine by making sure th
 master: 127.0.0.1
 ```
 
-##Logger
+## Logger
 This script counts all the log files with extension '.log' in /var/log/ and adds the results per file to /root/counts.log along with a datetime.
+
 create a file named logger.sh in /srv/salt and paste these lines in it
 ```
 n=`date`
@@ -49,7 +52,7 @@ Now create the logger salt state by creating a file named 'logger.sls' in /srv/s
 ```
 run it: ```sudo salt "*" state.apply logger```
 
-##users
+## users
 This will create 3 users and add the football.pem public ssh key to the authorized_keys for that users
 ```
 alex:
@@ -82,6 +85,13 @@ barack:
 ```
 create the 'ssh_keys/' directory in /srv/salt:
 ```sudo mkdir /srv/salt/ssh_keys```
+
 now copy the public key from the current user to /srv/salt/ssh_keys/thatch.id_rsa.pub:
-```cat ~/.ssh/authorized_keys > /srv/salt/ssh_keys/thatch.id_rsa.pub```
+```cat ~/.ssh/authorized_keys >
+
+/srv/salt/ssh_keys/thatch.id_rsa.pub```
 run it: ```sudo salt "*" state.apply users```
+
+## My solution
+My solution can be accessed running this command from within this repo:
+```ssh -i "football.pem" ubuntu@54.145.154.178```
