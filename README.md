@@ -9,7 +9,8 @@ chmod the key with this command ```chmod 400 football.pem```
 once the VM is booted highlight the VM and click the 'connect' button on the top. This shows how to connect to you VM using ssh. Example:
 ```
 ssh -i "football.pem" ubuntu@54.145.154.178
-``` (replace the ip with the one assigned to your VM)
+```
+(replace the ip with the one assigned to your VM)
 
 install salt master and minion:
 ```
